@@ -46,14 +46,14 @@ unsigned int heap_level(unsigned int index)
     return level;
 }
 
-void heap_print(heap_t *heap)
+void heap_print(heap_t *heap, FILE *output)
 {
     for (int ix = 0; ix < heap_size(heap); ix++)
     {
-        printf("%3d - %3d : " HEAP_KEY_FORMAT "\n", heap_level(ix), ix,
+        fprintf(output, "%3d - %3d : " HEAP_KEY_FORMAT "\n", heap_level(ix), ix,
                heap->data[ix].key);
     }
-    printf("\n");
+    fprintf(output, "\n");
 }
 
 void heap_swap(heap_t *heap, int index1, int index2)
